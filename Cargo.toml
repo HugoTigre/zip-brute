@@ -1,0 +1,52 @@
+[package]
+name = "zip-brute"
+version = "0.1.0"
+edition = "2021"
+license-file = "LICENSE"
+description = "Utility to find the correct password to a zip file. Supports AES and ZipCrypto."
+authors = ["Hugo Tigre"]
+readme = "README.md"
+homepage = "https://github.com/HugoTigre/zip-brute"
+repository = "https://github.com/HugoTigre/zip-brute"
+keywords = ["zip", "password", "cracker", "brute-force"]
+categories = ["command-line-utilities", "command-line-interface", "zip", "archive", "password"]
+exclude = [".github/", "tests/", "docs/", ".gitignore", ".editorconfig"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+# logging
+log = "0.4"
+log4rs = "1.2"
+# utilities
+strum = "0.24"
+strum_macros = "0.24"
+rand = "0.8"
+chrono = "0.4"
+clap = { version = "4.1", features = ["cargo"] }
+# zip
+zip = "0.6"
+# lazy
+lazy_static = "1.4"
+# concurrency
+rayon = "1.7"
+#crossbeam-channel = "0.5"
+num_cpus = "1.15"
+# progress bar
+indicatif = { version = "0.17", features = ["rayon"] }
+
+[dev-dependencies]
+criterion = { version = "0.4.0", features = ["html_reports"] } # benchmarks
+
+[profile.bench]
+debug = true
+
+[[bench]]
+name = "password_iterator_bench"
+harness = false
+[[bench]]
+name = "password_gen_processor_bench"
+harness = false
+[[bench]]
+name = "dictionary_processor_bench"
+harness = false
