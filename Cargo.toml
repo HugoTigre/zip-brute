@@ -19,8 +19,8 @@ exclude = [".github/", "tests/", "docs/", ".gitignore", ".editorconfig"]
 log = "0.4"
 log4rs = "1.2"
 # utilities
-strum = "0.25"
-strum_macros = "0.24"
+strum = "0.24"
+strum_macros = "0.25"
 rand = "0.8"
 chrono = "0.4"
 clap = { version = "4.1", features = ["cargo"] }
@@ -36,7 +36,7 @@ num_cpus = "1.15"
 indicatif = { version = "0.17", features = ["rayon"] }
 
 [dev-dependencies]
-criterion = { version = "0.4.0", features = ["html_reports"] } # benchmarks
+criterion = { version = "0.5.1", features = ["html_reports"] } # benchmarks
 
 [profile.bench]
 debug = true
