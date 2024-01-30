@@ -120,7 +120,7 @@ pub fn build_args() -> Result<Args, Box<dyn Error>> {
     let mut charset_max_len = None;
     if dic_file.is_none() {
         let charset_len: Option<&String> = sub_matches.try_get_one("charset_len").expect("validated in args parser");
-        if let Some(..) = charset_len {
+        if charset_len.is_some() {
             return Err("Charset length is required for password generation strategy.".into());
         } else {
             let (min_len, max_len) = charset_len.unwrap().split_once('-').expect("validated in args parser");
@@ -145,7 +145,7 @@ pub fn build_args() -> Result<Args, Box<dyn Error>> {
         charset_max_len,
         concurrency: *concurrency,
         progress: *progress.unwrap_or(&true),
-        zip_file_index: *zip_file_index.unwrap_or_else(|| &0),
+        zip_file_index: *zip_file_index.unwrap_or(&0),
     })
 }
 
@@ -185,10 +185,10 @@ fn validate_charset_arg(charset: &str) -> Result<String, String> {
     for c in chars {
         if char_set.contains(&c) {
             found_duplicate = true;
-            duplicate_char = c.clone();
+            duplicate_char = c;
             break;
         } else {
-            char_set.insert(c.clone());
+            char_set.insert(c);
         }
     }
 
@@ -205,7 +205,7 @@ fn validate_charset_arg(charset: &str) -> Result<String, String> {
 /// todo: max len cannot be smaller than charset length
 ///
 fn validate_charset_len(charset_len: &str) -> Result<String, String> {
-    let min_and_max_len = charset_len.split_once("-");
+    let min_and_max_len = charset_len.split_once('-');
     match min_and_max_len {
         Some((min, max)) => {
             let min_val = &min.parse::<usize>();
