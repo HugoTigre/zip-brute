@@ -105,16 +105,16 @@ mod tests {
 
     #[test]
     fn should_iterate_the_correct_nr_of_password() {
-        let chars = vec!['a', 'b', 'c', 'd'];
-        let min_length = vec![1, 2, 3, 4];
-        let max_length = vec![1, 2, 3, 4];
+        let chars = ['a', 'b', 'c', 'd'];
+        let min_length = [1, 2, 3, 4];
+        let max_length = [1, 2, 3, 4];
 
         min_length.iter().for_each(|&min_length| {
             max_length.iter().filter(|length| length >= &&min_length).for_each(|&max_length| {
                 let iter =
                     password_iterator::PasswordGenerator::new(&chars, min_length, max_length).unwrap();
 
-                let charset = Charset { charset: chars.clone(), min_len: min_length, max_len: max_length };
+                let charset = Charset { charset: chars.to_vec(), min_len: min_length, max_len: max_length };
 
                 let expected_nr_of_passwords = count_combinations(&charset);
                 let nr_of_passwords = iter.count();

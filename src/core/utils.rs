@@ -99,7 +99,7 @@ pub fn validate_zip(path: &String, file_index: &usize) -> Result<(), Box<dyn Err
     let zip_result = archive.by_index(*file_index);
     match zip_result {
         Ok(_) => Err("Zip file not encrypted".into()),
-        Err(UnsupportedArchive(msg)) if msg == "Password required to decrypt file" => Ok(()),
+        Err(UnsupportedArchive("Password required to decrypt file")) => Ok(()),
         Err(e) => Err(format!("Failed to load zip archive: {e}").into()),
     }
 }

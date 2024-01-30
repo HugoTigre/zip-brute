@@ -39,9 +39,5 @@ pub fn process(
             decrypt(pass, &zip.data, progress_bar)
         });
 
-    if let Some(..) = result {
-        Some(result.unwrap().to_string())
-    } else {
-        None
-    }
+    result.map_or_else(|| None, |r| Some(r.to_string()))
 }
