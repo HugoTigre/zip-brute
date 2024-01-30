@@ -9,7 +9,7 @@ readme = "README.md"
 homepage = "https://github.com/HugoTigre/zip-brute"
 repository = "https://github.com/HugoTigre/zip-brute"
 keywords = ["zip", "password", "cracker", "brute-force"]
-categories = ["command-line-utilities", "command-line-interface", "zip", "archive", "password"]
+categories = ["command-line-utilities", "command-line-interface"]
 exclude = [".github/", "tests/", "docs/", ".gitignore", ".editorconfig"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -19,8 +19,8 @@ exclude = [".github/", "tests/", "docs/", ".gitignore", ".editorconfig"]
 log = "0.4"
 log4rs = "1.2"
 # utilities
-strum = "0.24"
-strum_macros = "0.25"
+strum = "0.26"
+strum_macros = "0.26"
 rand = "0.8"
 chrono = "0.4"
 clap = { version = "4.1", features = ["cargo"] }

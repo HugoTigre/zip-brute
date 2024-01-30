@@ -5,12 +5,13 @@ use std::path::Path;
 use std::time::Duration;
 
 use indicatif::{ProgressBar, ProgressDrawTarget, ProgressStyle};
-use log::LevelFilter;
 use log4rs::append::console::ConsoleAppender;
 use log4rs::config::{Appender, Root};
 use log4rs::encode::pattern::PatternEncoder;
+use log::LevelFilter;
 use zip::result::ZipError::UnsupportedArchive;
 use zip::ZipArchive;
+
 use crate::models::charset::Charset;
 
 ///
