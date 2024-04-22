@@ -25,7 +25,7 @@ rand = "0.8"
 chrono = "0.4"
 clap = { version = "4.1", features = ["cargo"] }
 # zip
-zip = "0.6"
+zip = "1.1"
 # lazy
 lazy_static = "1.4"
 # concurrency
