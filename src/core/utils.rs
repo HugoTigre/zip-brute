@@ -49,7 +49,7 @@ pub fn decrypt<'a>(
     }
 
     match result {
-        Ok(Ok(mut zip)) => {
+        Ok(mut zip) => {
             let mut buffer = Vec::with_capacity(zip.size() as usize);
             match zip.read_to_end(&mut buffer) {
                 Err(_) => {
